@@ -30,10 +30,11 @@ for filepath in list_of_files:
     filepath=Path(filepath)
     filedir, filename=os.path.split(filepath)
 
-    if filedir !="":
+    if filedir !="": #to check if directory is not empty and create a directory if it does not exists
         os.makedirs(filedir,exist_ok=True)
         logging.info(f"creating directory; {filedir} for the file: {filename}")
 
+    #to check if file does not exists or is empty, if so, create an empty file
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):   
         with open(filepath,"w") as f:
             pass
